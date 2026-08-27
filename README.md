@@ -3,7 +3,7 @@ ORDERING APPLICATION (OOP C++)
 Đồ án môn Lập trình hướng đối tượng (OOP) - Trường Đại học Giao thông vận tải TP.HCM.
 
 **1. GIỚI THIỆU DỰ ÁN**
-Ứng dụng đặt hàng chạy trên môi trường Console, viết bằng ngôn ngữ C++17. Chương trình hỗ trợ người dùng duyệt sản phẩm từ tệp dữ liệu, quản lý giỏ hàng, chọn phương thức vận chuyển và tính toán tự động thông tin đơn hàng cùng thời gian giao hàng dự kiến.
+* Ứng dụng đặt hàng chạy trên môi trường Console, viết bằng ngôn ngữ C++17. Chương trình hỗ trợ người dùng duyệt sản phẩm từ tệp dữ liệu, quản lý giỏ hàng, chọn phương thức vận chuyển và tính toán tự động thông tin đơn hàng cùng thời gian giao hàng dự kiến.
 
 **2. TÍNH NĂNG CHÍNH**
 * Quản lý sản phẩm: Tải dữ liệu từ file `products.txt`, hỗ trợ tìm kiếm và sắp xếp danh sách sản phẩm.
@@ -20,12 +20,14 @@ ORDERING APPLICATION (OOP C++)
   * `std::algorithm` thực hiện các thao tác tìm kiếm và sắp xếp.
 
 **4. CẤU TRÚC THƯ MỤC**
+```
 OrderingApp/
 ├── data/               # Chứa tệp products.txt
 ├── docs/               # Tài liệu thiết kế & task_group01.xlsx
 ├── include/            # Tệp khai báo Header (.h)
 ├── src/                # Tệp cài đặt Source (.cpp)
 └── CMakeLists.txt      # Cấu hình biên dịch CMake
+```
 
 **5. HƯỚNG DẪN BUILD & RUN**
 
