@@ -1,0 +1,20 @@
+1;Ao Thun Nam Basic;150000;50;Ao Nam
+2;Ao So Mi Nam Dai Tay;280000;35;Ao Nam
+3;Ao Khoac Jean Nam;450000;20;Ao Nam
+4;Ao Polo Nam;220000;40;Ao Nam
+5;Ao Hoodie Nam;320000;30;Ao Nam
+6;Quan Jean Nam Slim Fit;380000;25;Quan Nam
+7;Quan Kaki Nam;250000;30;Quan Nam
+8;Quan Short The Thao Nam;120000;45;Quan Nam
+9;Quan Tay Nam Cong So;350000;20;Quan Nam
+10;Ao Thun Nu Croptop;130000;55;Ao Nu
+11;Ao So Mi Nu Cong So;260000;38;Ao Nu
+12;Ao Khoac Blazer Nu;480000;18;Ao Nu
+13;Ao Len Nu Co Tron;210000;28;Ao Nu
+14;Ao Kieu Nu Tay Bong;175000;42;Ao Nu
+15;Quan Jean Nu Ong Suong;340000;27;Quan Nu
+16;Quan Legging Nu;140000;50;Quan Nu
+17;Chan Vay Xoe Nu;230000;24;Vay
+18;Dam Maxi Nu;390000;16;Vay
+19;Dam Cong So Nu;420000;22;Vay
+20;Ao Khoac Gio The Thao Unisex;270000;33;Ao Khoac
