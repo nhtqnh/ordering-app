@@ -1,6 +1,5 @@
 #include "product/Product.h"
 
-// ---- Constructors ----
 Product::Product()
     : id(0), name(""), price(0.0), quantity(0), category("")
 {
@@ -12,20 +11,17 @@ Product::Product(int id, const std::string& name, double price,
 {
 }
 
-// ---- Destructor ----
 Product::~Product()
 {
-    // Khong can giai phong gi dac biet (khong dung con tro dong)
 }
 
-// ---- Getters ----
+
 int Product::getId() const { return id; }
 std::string Product::getName() const { return name; }
 double Product::getPrice() const { return price; }
 int Product::getQuantity() const { return quantity; }
 std::string Product::getCategory() const { return category; }
 
-// ---- Setters ----
 void Product::setName(const std::string& newName) { name = newName; }
 void Product::setPrice(double newPrice) { price = newPrice; }
 void Product::setQuantity(int newQuantity) { quantity = newQuantity; }
@@ -35,13 +31,13 @@ bool Product::reduceQuantity(int amount)
 {
     if (amount <= 0 || amount > quantity)
     {
-        return false; // khong du hang hoac so luong khong hop le
+        return false; 
     }
     quantity -= amount;
     return true;
 }
 
-// ---- Operator Overloading ----
+
 bool Product::operator==(const Product& other) const
 {
     return this->id == other.id;

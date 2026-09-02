@@ -21,8 +21,6 @@ static std::vector<std::string> splitLine(const std::string& line, char delimite
     return tokens;
 }
 
-// ---- Doc du lieu tu file .txt ----
-// Dinh dang moi dong: id;ten;gia;so_luong;danh_muc
 bool ProductManager::loadFromFile(const std::string& filePath)
 {
     std::ifstream file(filePath);
@@ -54,7 +52,7 @@ bool ProductManager::loadFromFile(const std::string& filePath)
     return true;
 }
 
-// ---- Hien thi danh sach ----
+//hien thi danh sach
 void ProductManager::displayAll() const
 {
     if (products.empty())
@@ -69,12 +67,12 @@ void ProductManager::displayAll() const
     }
 }
 
-// ---- Tim kiem theo ID ----
+//tim kiem theo id
 Product* ProductManager::findById(int id)
 {
     for (auto& p : products)
     {
-        if (p.getId() == id)   // co the thay bang: Product temp(id,"",0,0,""); if (p == temp)
+        if (p.getId() == id)   
         {
             return &p;
         }
@@ -82,7 +80,7 @@ Product* ProductManager::findById(int id)
     return nullptr;
 }
 
-// ---- Tim kiem theo ten (gan dung, khong phan biet hoa thuong) ----
+//tim kiem theo ten
 static std::string toLower(const std::string& s)
 {
     std::string result = s;
@@ -105,7 +103,7 @@ std::vector<Product> ProductManager::searchByName(const std::string& keyword) co
     return result;
 }
 
-// ---- Sap xep theo gia (dung operator< / operator> tu Product) ----
+//sap xep theo gia
 void ProductManager::sortByPriceAscending()
 {
     std::sort(products.begin(), products.end(),
@@ -118,7 +116,7 @@ void ProductManager::sortByPriceDescending()
               [](const Product& a, const Product& b) { return a > b; });
 }
 
-// ---- Sap xep theo ten ----
+//sap xep theo ten
 void ProductManager::sortByName()
 {
     std::sort(products.begin(), products.end(),
