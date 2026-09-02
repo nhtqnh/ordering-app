@@ -8,7 +8,6 @@ ProductManager::ProductManager()
 {
 }
 
-// ---- Ham phu: tach chuoi theo dau phan cach ----
 static std::vector<std::string> splitLine(const std::string& line, char delimiter)
 {
     std::vector<std::string> tokens;
