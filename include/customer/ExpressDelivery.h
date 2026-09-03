@@ -1,20 +1,10 @@
-#ifndef EXPRESSDELIVERY_H
-#define EXPRESSDELIVERY_H
+#pragma once
 
-#include "DeliveryMethod.h"
+#include "customer/DeliveryMethod.h"
 
 class ExpressDelivery : public DeliveryMethod
 {
 public:
-    double calculateFee() const override
-    {
-        return 50000;
-    }
-
-    int getDeliveryDays() const override
-    {
-        return 1;
-    }
+    double calculateFee() const override;
+    int getDeliveryDays() const override;
 };
-
-#endif

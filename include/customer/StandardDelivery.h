@@ -1,20 +1,10 @@
-#ifndef STANDARDDELIVERY_H
-#define STANDARDDELIVERY_H
+#pragma once
 
-#include "DeliveryMethod.h"
+#include "customer/DeliveryMethod.h"
 
 class StandardDelivery : public DeliveryMethod
 {
 public:
-    double calculateFee() const override
-    {
-        return 30000;
-    }
-
-    int getDeliveryDays() const override
-    {
-        return 3;
-    }
+    double calculateFee() const override;
+    int getDeliveryDays() const override;
 };
-
-#endif

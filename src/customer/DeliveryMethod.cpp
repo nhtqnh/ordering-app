@@ -1,1 +1,3 @@
-#include "../../include/customer/DeliveryMethod.h"
+#include "customer/DeliveryMethod.h"
+
+DeliveryMethod::~DeliveryMethod() = default;

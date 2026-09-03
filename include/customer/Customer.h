@@ -1,61 +1,33 @@
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
+#pragma once
 
 #include <string>
-#include <iostream>
-using namespace std;
+#include <iosfwd>
 
 class Customer
 {
 private:
-    string name;
-    string phone;
-    string address;
+    std::string name;
+    std::string phone;
+    std::string address;
 
 public:
-    Customer(string name = "", string phone = "", string address = "")
-    {
-        this->name = name;
-        this->phone = phone;
-        this->address = address;
-    }
+    Customer(
+        const std::string& name = "",
+        const std::string& phone = "",
+        const std::string& address = ""
+    );
 
-    string getName() const
-    {
-        return name;
-    }
+    std::string getName() const;
+    void setName(const std::string& name);
 
-    void setName(string name)
-    {
-        this->name = name;
-    }
+    std::string getPhone() const;
+    void setPhone(const std::string& phone);
 
-    string getPhone() const
-    {
-        return phone;
-    }
+    std::string getAddress() const;
+    void setAddress(const std::string& address);
 
-    void setPhone(string phone)
-    {
-        this->phone = phone;
-    }
+    void print() const;
 
-    string getAddress() const
-    {
-        return address;
-    }
-
-    void setAddress(string address)
-    {
-        this->address = address;
-    }
-
-    void print() const
-    {
-        cout << "Customer Name: " << name << endl;
-        cout << "Phone: " << phone << endl;
-        cout << "Address: " << address << endl;
-    }
+    friend std::ostream& operator<<(std::ostream& out, const Customer& customer);
+    friend std::istream& operator>>(std::istream& in, Customer& customer);
 };
-
-#endif
