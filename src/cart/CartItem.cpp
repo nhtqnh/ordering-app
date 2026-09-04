@@ -1,4 +1,4 @@
-#include "CartItem.h"
+#include "cart/CartItem.h"
 
 CartItem::CartItem(const Product& product, int quantity)
     : product(product), quantity(quantity)

@@ -1,68 +1,181 @@
 #include "customer/Customer.h"
+#include "customer/Membership.h"
 
-#include <iostream>
-#include <string>
+#include <iomanip>
 
-Customer::Customer(
-    const std::string& name,
-    const std::string& phone,
-    const std::string& address
-)
-    : name(name), phone(phone), address(address)
+using namespace std;
+
+Customer::Customer(const string& name,
+                   const string& phone,
+                   const string& address)
+    : name(name),
+      phone(phone),
+      address(address),
+      totalSpent(0.0),
+      purchaseCount(0),
+      quarterSpent(0.0),
+      membershipStartDate("")
 {
 }
 
-std::string Customer::getName() const
+Customer::Customer(const Customer& other)
+    : name(other.name),
+      phone(other.phone),
+      address(other.address),
+      totalSpent(other.totalSpent),
+      purchaseCount(other.purchaseCount),
+      quarterSpent(other.quarterSpent),
+      membershipStartDate(other.membershipStartDate)
+{
+}
+
+Customer::~Customer()
+{
+}
+
+string Customer::getName() const
 {
     return name;
 }
 
-void Customer::setName(const std::string& name)
+void Customer::setName(const string& name)
 {
     this->name = name;
 }
 
-std::string Customer::getPhone() const
+string Customer::getPhone() const
 {
     return phone;
 }
 
-void Customer::setPhone(const std::string& phone)
+void Customer::setPhone(const string& phone)
 {
     this->phone = phone;
 }
 
-std::string Customer::getAddress() const
+string Customer::getAddress() const
 {
     return address;
 }
 
-void Customer::setAddress(const std::string& address)
+void Customer::setAddress(const string& address)
 {
     this->address = address;
 }
 
+double Customer::getTotalSpent() const
+{
+    return totalSpent;
+}
+
+void Customer::setTotalSpent(double value)
+{
+    if (value >= 0.0)
+    {
+        totalSpent = value;
+    }
+}
+
+int Customer::getPurchaseCount() const
+{
+    return purchaseCount;
+}
+
+void Customer::setPurchaseCount(int value)
+{
+    if (value >= 0)
+    {
+        purchaseCount = value;
+    }
+}
+
+double Customer::getQuarterSpent() const
+{
+    return quarterSpent;
+}
+
+void Customer::setQuarterSpent(double value)
+{
+    if (value >= 0.0)
+    {
+        quarterSpent = value;
+    }
+}
+
+void Customer::addQuarterSpent(double amount)
+{
+    if (amount > 0.0)
+    {
+        quarterSpent += amount;
+    }
+}
+
+string Customer::getMembershipStartDate() const
+{
+    return membershipStartDate;
+}
+
+void Customer::setMembershipStartDate(const string& date)
+{
+    membershipStartDate = date;
+}
+
+void Customer::recordPurchase(double amount)
+{
+    if (amount <= 0.0)
+    {
+        return;
+    }
+
+    totalSpent += amount;
+    purchaseCount += 1;
+}
+
+string Customer::getCustomerType() const
+{
+    return "Khach hang tieu chuan";
+}
+
+double Customer::getDiscountRate() const
+{
+    return 0.0;
+}
+
 void Customer::print() const
 {
-    std::cout << "Customer Name: " << name << std::endl;
-    std::cout << "Phone: " << phone << std::endl;
-    std::cout << "Address: " << address << std::endl;
+    cout << "-------------------------------------------\n"
+         << "Hang thanh vien : " << getCustomerType() << "\n"
+         << "Ten khach hang  : " << name << "\n"
+         << "So dien thoai   : " << phone << "\n"
+         << "Dia chi         : " << address << "\n"
+         << "Tong tien da mua: "
+         << fixed << setprecision(0)
+         << totalSpent << " VND\n"
+         << "So lan mua hang : "
+         << purchaseCount << "\n"
+         << "-------------------------------------------"
+         << endl;
 }
 
-std::ostream& operator<<(std::ostream& out, const Customer& customer)
+ostream& operator<<(ostream& os, const Customer& customer)
 {
-    out << "Customer Name: " << customer.name << std::endl;
-    out << "Phone: " << customer.phone << std::endl;
-    out << "Address: " << customer.address;
+    os << customer.name
+       << " (" << customer.phone << ") - "
+       << customer.address;
 
-    return out;
+    return os;
 }
 
-std::istream& operator>>(std::istream& in, Customer& customer)
+istream& operator>>(istream& is, Customer& customer)
 {
-    std::getline(in >> std::ws, customer.name);
-    std::getline(in, customer.phone);
-    std::getline(in, customer.address);
+    cout << "  > Nhap ho va ten: ";
+    getline(is, customer.name);
 
-    return in;
+    cout << "  > Nhap so dien thoai: ";
+    getline(is, customer.phone);
+
+    cout << "  > Nhap dia chi giao hang: ";
+    getline(is, customer.address);
+
+    return is;
 }

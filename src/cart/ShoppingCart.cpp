@@ -1,4 +1,4 @@
-#include "ShoppingCart.h"
+#include "cart/ShoppingCart.h"
 #include <iostream>
 #include <iomanip>
 
@@ -14,18 +14,42 @@ int ShoppingCart::getSize() const
     return static_cast<int>(items.size());
 }
 
-void ShoppingCart::addProduct(const Product& product)
+int ShoppingCart::getQuantityInCart(int productId) const
 {
+    for (const auto& item : items)
+    {
+        if (item.getProduct().getId() == productId)
+        {
+            return item.getQuantity();
+        }
+    }
+    return 0;
+}
+
+bool ShoppingCart::addProduct(const Product& product, int quantity)
+{
+    if (quantity <= 0)
+    {
+        return false;
+    }
+
+    int currentInCart = getQuantityInCart(product.getId());
+    if (currentInCart + quantity > product.getQuantity())
+    {
+        return false; // vuot qua ton kho
+    }
+
     for (int i = 0; i < items.size(); i++)
     {
         if (items[i].getProduct().getId() == product.getId())
         {
-            items[i].increaseQuantity();
-            return;
+            items[i].setQuantity(items[i].getQuantity() + quantity);
+            return true;
         }
     }
 
-    items.push_back(CartItem(product, 1));
+    items.push_back(CartItem(product, quantity));
+    return true;
 }
 
 bool ShoppingCart::removeProduct(int productId)
@@ -42,11 +66,15 @@ bool ShoppingCart::removeProduct(int productId)
     return false;
 }
 
-bool ShoppingCart::updateQuantity(int productId, int quantity)
+bool ShoppingCart::updateQuantity(int productId, int quantity, int stockAvailable)
 {
     if (quantity <= 0)
     {
         return false;
+    }
+    if (quantity > stockAvailable)
+    {
+        return false; // vuot qua ton kho
     }
 
     for (int i = 0; i < items.size(); i++)
@@ -77,11 +105,11 @@ void ShoppingCart::display() const
 {
     if (items.empty())
     {
-        cout << "Shopping cart is empty." << endl;
+        cout << "Gio hang dang trong." << endl;
         return;
     }
 
-    cout << "===== SHOPPING CART =====" << endl;
+    cout << "===== GIO HANG =====" << endl;
 
     for (int i = 0; i < items.size(); i++)
     {
@@ -89,19 +117,21 @@ void ShoppingCart::display() const
 
         cout << i + 1 << ". "
             << product.getName()
-            << " | Price: "
-            << fixed << setprecision(2)
+            << " | Gia: "
+            << fixed << setprecision(0)
             << product.getPrice()
-            << " | Quantity: "
+            << " VND | So luong: "
             << items[i].getQuantity()
-            << " | Total: "
+            << " | Thanh tien: "
             << items[i].getTotal()
+            << " VND"
             << endl;
     }
 
-    cout << "Subtotal: "
-        << fixed << setprecision(2)
+    cout << "Tam tinh: "
+        << fixed << setprecision(0)
         << getSubtotal()
+        << " VND"
         << endl;
 }
 

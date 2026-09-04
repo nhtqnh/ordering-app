@@ -9,7 +9,30 @@ include_directories(include)
 
 add_executable(OrderingApp
     src/main.cpp
-    src/Customer.cpp
-    src/Product.cpp
-    src/Order.cpp
+
+    # Customer
+    src/customer/Customer.cpp
+    src/customer/VIPCustomer.cpp
+    src/customer/DeliveryMethod.cpp
+    src/customer/StandardDelivery.cpp
+    src/customer/ExpressDelivery.cpp
+    src/customer/CustomerManager.cpp
+
+
+    # Product
+    src/product/Product.cpp
+    src/product/ProductManager.cpp
+
+    # Cart
+    src/cart/CartItem.cpp
+    src/cart/ShoppingCart.cpp
+
+    # Order
+    src/order/Order.cpp
+    src/order/OrderManager.cpp
+
+    # Utils
+    src/utils/DateUtils.cpp
+    src/utils/InputUtils.cpp
+    src/utils/Menu.cpp
 )
